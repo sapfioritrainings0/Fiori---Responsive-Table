@@ -1,0 +1,69 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="org.products.controller.View1">
+    <Page id="page" showHeader="false">
+	<HBox alignItems="End">
+ <VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+    <Label text="Name" design="Bold" required="true"/>
+	<SearchField id="name" width="16rem" placeholder="Search by name" search="onSearchByName"/>
+</VBox>
+<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+    <Label text="Rating" design="Bold" required="true"/>
+	<SearchField id="rating" width="16rem" placeholder="Search by rating" search="onSearchByRating"/>
+</VBox>
+
+<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTop">
+    <Label text="Release Date" design="Bold" required="true"/>
+		<DateRangeSelection id="releaseDate" showCurrentDateButton="true" showFooter="true" width="16rem" placeholder="" change=".handleChange"/>
+</VBox>
+
+<Button text="Search" press="onSearch" class="sapUiLargeMarginBegin" type="Emphasized"/>
+</HBox>
+    <Table id="idProductsTable" inset="false" items="{path: '/Products', sorter: [{path: 'Name', descending: true}, {path: 'ReleaseDate', descending: true}]}" mode="SingleSelectMaster" growing="true" growingScrollToLoad="false" growingThreshold="5" selectionChange="onSelectionChange" itemPress="onItemPress">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<Title text="Products" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Button text="Add Product" type="Emphasized" press="onAddProduct"/>
+					
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		
+		<columns>
+			<Column >
+				<Text text="ID"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Name"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Description"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true" width="20rem">
+				<Text text="Release Date"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Rating"/>
+			</Column>
+			<Column minScreenWidth="Tablet" demandPopin="true">
+				<Text text="Price"/>
+			</Column>
+			
+		</columns>
+		<items>
+			<ColumnListItem type="Active">
+				<cells>
+					
+					<Text text="{ID}"/>
+					<Text text="{Name}"/>
+					<Text text="{Description}"/>
+					<Text text="{path: 'ReleaseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MM-yyyy' }}"/>
+					<Text text="{Rating}"/>
+					<Text text="{parts: [{path:'Price'}, {value: 'USD'}], type:'sap.ui.model.type.Currency', formatOptions: { showMeasure: true }}"/>
+				
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+    </Page>
+</mvc:View>
