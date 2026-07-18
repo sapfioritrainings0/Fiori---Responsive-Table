@@ -23,7 +23,7 @@
 				<content>
 					<Title text="Products" level="H2"/>
                     <ToolbarSpacer/>
-                    <Button text="Add Product" type="Emphasized" press="onAddProduct"/>
+                    <Button text="{i18n>addProduct}" type="Emphasized" press="onAddProduct"/>
 					
 				</content>
 			</OverflowToolbar>

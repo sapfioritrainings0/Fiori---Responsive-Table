@@ -6,29 +6,29 @@
 <form:content>
 
 <Label text="ID" required="true"></Label>
-<Input id="inputId" placeholder="Enter ID"/>
+<Input id="inputId" value="{newProduct>/ID}" placeholder="Enter ID"/>
 
 <Label text="Name" required="true"></Label>
-<Input id="inputName" placeholder="Enter Name"/>
+<Input id="inputName" value="{newProduct>/Name}" placeholder="Enter Name"/>
 
 <Label text="Description" ></Label>
-<TextArea id="inputDescription" rows="2" width="100%" placeholder="Enter Description"></TextArea>
+<TextArea id="inputDescription" rows="2" width="100%" value="{newProduct>/Description}" placeholder="Enter Description"></TextArea>
 
 <Label text="Release Date"></Label>
-<DatePicker id="inputReleaseDate" valueFormat="yyyy-MM-dd" displayFormat="dd-MM-yyyy" placeholder="dd-MM-yyyy"></DatePicker>
+<DatePicker id="inputReleaseDate" displayFormat="dd-MM-yyyy" value="{path:'newProduct>/ReleaseDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'dd-MM-yyyy' }}" placeholder="dd-MM-yyyy"></DatePicker>
 
 <Label text="Rating"></Label>
-<StepInput id="inputRating" min="0" max="5" step="1" value="0"></StepInput>
+<StepInput id="inputRating" min="0" max="5" step="1" value="{newProduct>/Rating}"></StepInput>
 
 <Label text="Price" required="true"></Label>
-<Input id="inputPrice" placeholder="0.00" type="Number" />
+<Input id="inputPrice" placeholder="0.00" value="{newProduct>/Price}" type="Number" />
 </form:content>
 
 
 </form:SimpleForm>
 
 <beginButton>
-	<Button text="Create" type="Accept" press="onAddProduct"/>
+	<Button text="Create" type="Accept" press="onCreateProduct"/>
 </beginButton>
 <endButton>
 	<Button text="Cancel" type="Reject" press="onCloseDialog"/>
